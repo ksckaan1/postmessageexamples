@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <section class="one">
+        <button>Fetch Data</button>
+        <br>
+        <span class="data">Empty</span>
+    </section>
+    <section class="two">
+        <iframe src="./data.html"></iframe>
+    </section>
+    <style>
+        body{
+            display: flex;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+        body > * {
+            width: 40%;
+        }
+        section.one{
+            background-color: lightgreen;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        section.two{
+            background-color: coral;
+        }
+        iframe{
+            border: 0px;
+        }
+    </style>
+    <script>
+        document.querySelector("button").addEventListener("click", ()=>{
+            window.frames[0].postMessage("fetch", "*")
+        })
+        window.addEventListener("message", (e)=>{
+            document.querySelector("span.data").textContent = e.data
+        })
+    </script>
+</body>
+</html>
